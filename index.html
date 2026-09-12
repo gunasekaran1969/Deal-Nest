@@ -1,0 +1,328 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DealNest | Smart Deals & Best Picks</title>
+
+    <meta name="description"
+          content="DealNest helps you discover smart deals, best products, offers and product recommendations.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo">
+            🛍️ <span>DealNest</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#deals">Deals</a>
+            <a href="#categories">Categories</a>
+            <a href="#picks">Top Picks</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Smart Deals.<br>Better Choices.</h1>
+
+            <p>
+                Discover great products, attractive offers and
+                smart shopping recommendations in one place.
+            </p>
+
+            <a href="#deals" class="hero-button">
+                🔥 Explore Deals
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="search-section">
+
+        <h2>Find Your Deal</h2>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products or deals..."
+            >
+
+            <button onclick="searchProducts()">
+                🔎 Search
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="section">
+
+        <h2>Shop by Category</h2>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>Electronics</h3>
+                <p>Phones, gadgets and accessories</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">👕</div>
+                <h3>Fashion</h3>
+                <p>Clothing, shoes and accessories</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <h3>Home & Kitchen</h3>
+                <p>Useful products for your home</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎧</div>
+                <h3>Gadgets</h3>
+                <p>Trending tech and smart gadgets</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TODAY'S DEALS -->
+    <section id="deals" class="section deals-section">
+
+        <h2>🔥 Today's Deals</h2>
+
+        <p class="section-subtitle">
+            Check out some of our featured deals.
+        </p>
+
+        <div class="product-grid">
+
+            <!-- PRODUCT 1 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    📱
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Electronics
+                    </span>
+
+                    <h3>Smartphone</h3>
+
+                    <p>
+                        Discover popular smartphones and
+                        compare the latest deals.
+                    </p>
+
+                    <button class="deal-button"
+                            onclick="viewDeal('Smartphone')">
+                        🛒 View Deal
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🎧
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Gadgets
+                    </span>
+
+                    <h3>Wireless Earbuds</h3>
+
+                    <p>
+                        Explore wireless earbuds and
+                        popular audio products.
+                    </p>
+
+                    <button class="deal-button"
+                            onclick="viewDeal('Wireless Earbuds')">
+                        🛒 View Deal
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    ⌚
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Gadgets
+                    </span>
+
+                    <h3>Smart Watch</h3>
+
+                    <p>
+                        Find smart watches with useful
+                        features and attractive prices.
+                    </p>
+
+                    <button class="deal-button"
+                            onclick="viewDeal('Smart Watch')">
+                        🛒 View Deal
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+            <div class="product-card">
+
+                <div class="product-image">
+                    🎒
+                </div>
+
+                <div class="product-info">
+
+                    <span class="product-category">
+                        Fashion
+                    </span>
+
+                    <h3>Travel Backpack</h3>
+
+                    <p>
+                        Browse useful backpacks for travel,
+                        college and everyday use.
+                    </p>
+
+                    <button class="deal-button"
+                            onclick="viewDeal('Travel Backpack')">
+                        🛒 View Deal
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOP PICKS -->
+    <section id="picks" class="section top-picks">
+
+        <h2>⭐ DealNest Top Picks</h2>
+
+        <p>
+            We highlight products that may offer good value,
+            useful features and strong customer interest.
+        </p>
+
+        <div class="pick-box">
+
+            <div>
+                <span>🏆</span>
+                <h3>Best Value</h3>
+                <p>Products worth checking before you buy.</p>
+            </div>
+
+            <div>
+                <span>💰</span>
+                <h3>Budget Picks</h3>
+                <p>Useful products at affordable prices.</p>
+            </div>
+
+            <div>
+                <span>🚀</span>
+                <h3>Trending</h3>
+                <p>Popular products and new discoveries.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AFFILIATE DISCLOSURE -->
+    <section class="disclosure">
+
+        <h3>Affiliate Disclosure</h3>
+
+        <p>
+            DealNest may earn a commission when you purchase
+            products through some links on this website.
+            This does not affect the price you pay.
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-logo">
+            🛍️ DealNest
+        </div>
+
+        <p>
+            Smart Deals. Better Choices.
+        </p>
+
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 DealNest. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
