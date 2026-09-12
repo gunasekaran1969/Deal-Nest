@@ -2,326 +2,1236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>DealNest | Smart Deals & Best Picks</title>
+<title>DealNest | Smart Deals & Best Picks</title>
 
-    <meta name="description"
-          content="DealNest helps you discover smart deals, best products, offers and product recommendations.">
+<meta name="description"
+content="DealNest helps you discover smart deals, useful products and great shopping recommendations.">
 
-    <link rel="stylesheet" href="style.css">
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #ff5a1f;
+}
+
+.logo span {
+    color: #222;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff5a1f;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 440px;
+    padding: 70px 7%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        135deg,
+        #ff6a00,
+        #ff2d55,
+        #7b2cff
+    );
+    color: white;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.hero-button {
+    display: inline-block;
+    background: white;
+    color: #ff4b20;
+    padding: 14px 26px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-section {
+    background: white;
+    padding: 40px 7%;
+    text-align: center;
+}
+
+.search-section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    background: #f1f3f7;
+    border-radius: 35px;
+    padding: 5px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 14px 20px;
+    font-size: 16px;
+}
+
+.search-box button {
+    border: none;
+    background: #ff5a1f;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+.section {
+    padding: 60px 7%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.category-grid {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+}
+
+.category-icon {
+    font-size: 45px;
+}
+
+.category-card h3 {
+    margin: 10px 0 5px;
+}
+
+.category-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* =========================
+   DEALS
+========================= */
+
+.deals-section {
+    background: #eef2f8;
+}
+
+.product-grid {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    text-align: left;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.product-image {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        #eef3ff,
+        #f9eaff
+    );
+    font-size: 75px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    font-size: 12px;
+    color: #ff5a1f;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.product-info h3 {
+    font-size: 21px;
+    margin: 7px 0;
+}
+
+.product-info p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.old-price {
+    color: #888;
+    text-decoration: line-through;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+.discount {
+    display: inline-block;
+    background: #e8f8ed;
+    color: #15803d;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.deal-button {
+    width: 100%;
+    border: none;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #ff5a1f;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.deal-button:hover {
+    background: #e94710;
+}
+
+
+/* =========================
+   TOP PICKS
+========================= */
+
+.top-picks {
+    background: white;
+}
+
+.pick-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 35px auto 0;
+}
+
+.pick-box > div {
+    padding: 30px 20px;
+    border-radius: 15px;
+    background: #f6f7fb;
+}
+
+.pick-box span {
+    font-size: 40px;
+}
+
+.pick-box h3 {
+    margin: 10px 0;
+}
+
+.pick-box p {
+    color: #666;
+}
+
+
+/* =========================
+   DISCLOSURE
+========================= */
+
+.disclosure {
+    padding: 35px 7%;
+    background: #fff8e8;
+    text-align: center;
+}
+
+.disclosure p {
+    max-width: 750px;
+    margin: auto;
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #171717;
+    color: white;
+    text-align: center;
+    padding: 40px 7%;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff6a00;
+}
+
+.footer-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.footer-links a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ff6a00;
+}
+
+footer p {
+    color: #aaa;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 15px 5%;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 55px 6%;
+    }
+
+    .hero h1 {
+        font-size: 44px;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pick-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 400px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        background: transparent;
+        gap: 10px;
+    }
+
+    .search-box input {
+        background: #f1f3f7;
+        border-radius: 30px;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .section {
+        padding: 45px 5%;
+    }
+
+    .section h2 {
+        font-size: 28px;
+    }
+
+    .category-grid,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pick-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
 
-        <div class="logo">
-            🛍️ <span>DealNest</span>
-        </div>
+<!-- =========================
+     HEADER
+========================= -->
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="#deals">Deals</a>
-            <a href="#categories">Categories</a>
-            <a href="#picks">Top Picks</a>
-        </nav>
+<header>
 
-    </header>
+    <div class="logo">
+        🛍️ <span>DealNest</span>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#deals">Deals</a>
+        <a href="#categories">Categories</a>
+        <a href="#picks">Top Picks</a>
+    </nav>
+
+</header>
 
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+<!-- =========================
+     HERO
+========================= -->
 
-        <div class="hero-content">
+<section class="hero" id="home">
 
-            <h1>Smart Deals.<br>Better Choices.</h1>
+    <div class="hero-content">
+
+        <h1>
+            Smart Deals.<br>
+            Better Choices.
+        </h1>
+
+        <p>
+            Discover useful products, attractive offers
+            and smart shopping recommendations in one place.
+        </p>
+
+        <a href="#deals" class="hero-button">
+            🔥 Explore Deals
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<section class="search-section">
+
+    <h2>🔎 Find Your Deal</h2>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products or deals..."
+        >
+
+        <button onclick="searchProducts()">
+            Search
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="section" id="categories">
+
+    <h2>Shop by Category</h2>
+
+    <p class="subtitle">
+        Explore products from popular categories.
+    </p>
+
+    <div class="category-grid">
+
+        <div class="category-card"
+             onclick="filterCategory('Electronics')">
+
+            <div class="category-icon">📱</div>
+
+            <h3>Electronics</h3>
 
             <p>
-                Discover great products, attractive offers and
-                smart shopping recommendations in one place.
+                Phones, gadgets and accessories
             </p>
 
-            <a href="#deals" class="hero-button">
-                🔥 Explore Deals
-            </a>
+        </div>
+
+
+        <div class="category-card"
+             onclick="filterCategory('Fashion')">
+
+            <div class="category-icon">👕</div>
+
+            <h3>Fashion</h3>
+
+            <p>
+                Clothing, shoes and accessories
+            </p>
 
         </div>
 
-    </section>
 
+        <div class="category-card"
+             onclick="filterCategory('Home')">
 
-    <!-- SEARCH -->
-    <section class="search-section">
+            <div class="category-icon">🏠</div>
 
-        <h2>Find Your Deal</h2>
+            <h3>Home & Kitchen</h3>
 
-        <div class="search-box">
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search products or deals..."
-            >
-
-            <button onclick="searchProducts()">
-                🔎 Search
-            </button>
+            <p>
+                Useful products for your home
+            </p>
 
         </div>
 
-    </section>
 
+        <div class="category-card"
+             onclick="filterCategory('Gadgets')">
 
-    <!-- CATEGORIES -->
-    <section id="categories" class="section">
+            <div class="category-icon">🎧</div>
 
-        <h2>Shop by Category</h2>
+            <h3>Gadgets</h3>
 
-        <div class="category-grid">
-
-            <div class="category-card">
-                <div class="category-icon">📱</div>
-                <h3>Electronics</h3>
-                <p>Phones, gadgets and accessories</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">👕</div>
-                <h3>Fashion</h3>
-                <p>Clothing, shoes and accessories</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🏠</div>
-                <h3>Home & Kitchen</h3>
-                <p>Useful products for your home</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🎧</div>
-                <h3>Gadgets</h3>
-                <p>Trending tech and smart gadgets</p>
-            </div>
+            <p>
+                Trending technology and gadgets
+            </p>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- TODAY'S DEALS -->
-    <section id="deals" class="section deals-section">
+<!-- =========================
+     DEALS
+========================= -->
 
-        <h2>🔥 Today's Deals</h2>
+<section class="section deals-section" id="deals">
 
-        <p class="section-subtitle">
-            Check out some of our featured deals.
-        </p>
+    <h2>🔥 Today's Deals</h2>
 
-        <div class="product-grid">
+    <p class="subtitle">
+        Featured products on DealNest.
+    </p>
 
-            <!-- PRODUCT 1 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    📱
-                </div>
+    <div class="product-grid" id="productGrid">
 
-                <div class="product-info">
 
-                    <span class="product-category">
-                        Electronics
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card"
+             data-category="Electronics"
+             data-name="Smartphone">
+
+            <div class="product-image">
+                📱
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Electronics
+                </span>
+
+                <h3>Smartphone</h3>
+
+                <p>
+                    Discover popular smartphones
+                    and compare the latest offers.
+                </p>
+
+                <div class="price">
+                    ₹14,999
+                    <span class="old-price">
+                        ₹18,999
                     </span>
-
-                    <h3>Smartphone</h3>
-
-                    <p>
-                        Discover popular smartphones and
-                        compare the latest deals.
-                    </p>
-
-                    <button class="deal-button"
-                            onclick="viewDeal('Smartphone')">
-                        🛒 View Deal
-                    </button>
-
                 </div>
+
+                <span class="discount">
+                    21% OFF
+                </span>
+
+                <button
+                    class="deal-button"
+                    onclick="viewDeal('Smartphone')">
+
+                    🛒 View Deal
+
+                </button>
 
             </div>
 
+        </div>
 
-            <!-- PRODUCT 2 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    🎧
-                </div>
+        <!-- PRODUCT 2 -->
 
-                <div class="product-info">
+        <div class="product-card"
+             data-category="Gadgets"
+             data-name="Wireless Earbuds">
 
-                    <span class="product-category">
-                        Gadgets
+            <div class="product-image">
+                🎧
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Gadgets
+                </span>
+
+                <h3>Wireless Earbuds</h3>
+
+                <p>
+                    Explore popular wireless earbuds
+                    and audio products.
+                </p>
+
+                <div class="price">
+                    ₹1,299
+                    <span class="old-price">
+                        ₹2,499
                     </span>
-
-                    <h3>Wireless Earbuds</h3>
-
-                    <p>
-                        Explore wireless earbuds and
-                        popular audio products.
-                    </p>
-
-                    <button class="deal-button"
-                            onclick="viewDeal('Wireless Earbuds')">
-                        🛒 View Deal
-                    </button>
-
                 </div>
+
+                <span class="discount">
+                    48% OFF
+                </span>
+
+                <button
+                    class="deal-button"
+                    onclick="viewDeal('Wireless Earbuds')">
+
+                    🛒 View Deal
+
+                </button>
 
             </div>
 
+        </div>
 
-            <!-- PRODUCT 3 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    ⌚
-                </div>
+        <!-- PRODUCT 3 -->
 
-                <div class="product-info">
+        <div class="product-card"
+             data-category="Gadgets"
+             data-name="Smart Watch">
 
-                    <span class="product-category">
-                        Gadgets
+            <div class="product-image">
+                ⌚
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Gadgets
+                </span>
+
+                <h3>Smart Watch</h3>
+
+                <p>
+                    Find smart watches with useful
+                    features and attractive prices.
+                </p>
+
+                <div class="price">
+                    ₹1,799
+                    <span class="old-price">
+                        ₹3,499
                     </span>
-
-                    <h3>Smart Watch</h3>
-
-                    <p>
-                        Find smart watches with useful
-                        features and attractive prices.
-                    </p>
-
-                    <button class="deal-button"
-                            onclick="viewDeal('Smart Watch')">
-                        🛒 View Deal
-                    </button>
-
                 </div>
+
+                <span class="discount">
+                    49% OFF
+                </span>
+
+                <button
+                    class="deal-button"
+                    onclick="viewDeal('Smart Watch')">
+
+                    🛒 View Deal
+
+                </button>
 
             </div>
 
+        </div>
 
-            <!-- PRODUCT 4 -->
-            <div class="product-card">
 
-                <div class="product-image">
-                    🎒
-                </div>
+        <!-- PRODUCT 4 -->
 
-                <div class="product-info">
+        <div class="product-card"
+             data-category="Fashion"
+             data-name="Travel Backpack">
 
-                    <span class="product-category">
-                        Fashion
+            <div class="product-image">
+                🎒
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Fashion
+                </span>
+
+                <h3>Travel Backpack</h3>
+
+                <p>
+                    Useful backpacks for travel,
+                    college and everyday use.
+                </p>
+
+                <div class="price">
+                    ₹899
+                    <span class="old-price">
+                        ₹1,499
                     </span>
-
-                    <h3>Travel Backpack</h3>
-
-                    <p>
-                        Browse useful backpacks for travel,
-                        college and everyday use.
-                    </p>
-
-                    <button class="deal-button"
-                            onclick="viewDeal('Travel Backpack')">
-                        🛒 View Deal
-                    </button>
-
                 </div>
 
+                <span class="discount">
+                    40% OFF
+                </span>
+
+                <button
+                    class="deal-button"
+                    onclick="viewDeal('Travel Backpack')">
+
+                    🛒 View Deal
+
+                </button>
+
             </div>
 
         </div>
 
-    </section>
 
+        <!-- PRODUCT 5 -->
 
-    <!-- TOP PICKS -->
-    <section id="picks" class="section top-picks">
+        <div class="product-card"
+             data-category="Home"
+             data-name="Kitchen Mixer">
 
-        <h2>⭐ DealNest Top Picks</h2>
-
-        <p>
-            We highlight products that may offer good value,
-            useful features and strong customer interest.
-        </p>
-
-        <div class="pick-box">
-
-            <div>
-                <span>🏆</span>
-                <h3>Best Value</h3>
-                <p>Products worth checking before you buy.</p>
+            <div class="product-image">
+                🍳
             </div>
 
-            <div>
-                <span>💰</span>
-                <h3>Budget Picks</h3>
-                <p>Useful products at affordable prices.</p>
-            </div>
+            <div class="product-info">
 
-            <div>
-                <span>🚀</span>
-                <h3>Trending</h3>
-                <p>Popular products and new discoveries.</p>
+                <span class="product-category">
+                    Home
+                </span>
+
+                <h3>Kitchen Mixer</h3>
+
+                <p>
+                    Useful kitchen equipment for
+                    everyday cooking.
+                </p>
+
+                <div class="price">
+                    ₹2,499
+                    <span class="old-price">
+                        ₹3,999
+                    </span>
+                </div>
+
+                <span class="discount">
+                    37% OFF
+                </span>
+
+                <button
+                    class="deal-button"
+                    onclick="viewDeal('Kitchen Mixer')">
+
+                    🛒 View Deal
+
+                </button>
+
             </div>
 
         </div>
 
-    </section>
 
+        <!-- PRODUCT 6 -->
 
-    <!-- AFFILIATE DISCLOSURE -->
-    <section class="disclosure">
+        <div class="product-card"
+             data-category="Electronics"
+             data-name="Bluetooth Speaker">
 
-        <h3>Affiliate Disclosure</h3>
+            <div class="product-image">
+                🔊
+            </div>
 
-        <p>
-            DealNest may earn a commission when you purchase
-            products through some links on this website.
-            This does not affect the price you pay.
-        </p>
+            <div class="product-info">
 
-    </section>
+                <span class="product-category">
+                    Electronics
+                </span>
 
+                <h3>Bluetooth Speaker</h3>
 
-    <!-- FOOTER -->
-    <footer>
+                <p>
+                    Portable speakers for music,
+                    travel and entertainment.
+                </p>
 
-        <div class="footer-logo">
-            🛍️ DealNest
+                <div class="price">
+                    ₹1,499
+                    <span class="old-price">
+                        ₹2,499
+                    </span>
+                </div>
+
+                <span class="discount">
+                    40% OFF
+                </span>
+
+                <button
+                    class="deal-button"
+                    onclick="viewDeal('Bluetooth Speaker')">
+
+                    🛒 View Deal
+
+                </button>
+
+            </div>
+
         </div>
 
-        <p>
-            Smart Deals. Better Choices.
-        </p>
+    </div>
 
-        <div class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Privacy Policy</a>
+</section>
+
+
+<!-- =========================
+     TOP PICKS
+========================= -->
+
+<section class="section top-picks" id="picks">
+
+    <h2>⭐ DealNest Top Picks</h2>
+
+    <p class="subtitle">
+        We highlight products based on value,
+        usefulness and popularity.
+    </p>
+
+
+    <div class="pick-box">
+
+        <div>
+
+            <span>🏆</span>
+
+            <h3>Best Value</h3>
+
+            <p>
+                Products worth checking before
+                making a purchase.
+            </p>
+
         </div>
 
-        <p class="copyright">
-            © 2026 DealNest. All Rights Reserved.
-        </p>
 
-    </footer>
+        <div>
+
+            <span>💰</span>
+
+            <h3>Budget Picks</h3>
+
+            <p>
+                Useful products at affordable prices.
+            </p>
+
+        </div>
 
 
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
+        <div>
+
+            <span>🚀</span>
+
+            <h3>Trending</h3>
+
+            <p>
+                Popular products and new discoveries.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DISCLOSURE
+========================= -->
+
+<section class="disclosure">
+
+    <h3>Affiliate Disclosure</h3>
+
+    <p>
+        DealNest may earn a commission when you purchase
+        products through some links on this website.
+        This does not affect the price you pay.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        🛍️ DealNest
+    </div>
+
+    <p>
+        Smart Deals. Better Choices.
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="#home">Home</a>
+
+        <a href="#categories">Categories</a>
+
+        <a href="#deals">Deals</a>
+
+        <a href="#picks">Top Picks</a>
+
+    </div>
+
+
+    <p>
+        © 2026 DealNest. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* SEARCH PRODUCTS */
+
+function searchProducts() {
+
+    const input =
+        document.getElementById("searchInput");
+
+    const searchText =
+        input.value.trim().toLowerCase();
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+
+    if (searchText === "") {
+
+        products.forEach(function(product) {
+            product.style.display = "block";
+        });
+
+        return;
+    }
+
+
+    let found = false;
+
+
+    products.forEach(function(product) {
+
+        const name =
+            product.dataset.name.toLowerCase();
+
+        const category =
+            product.dataset.category.toLowerCase();
+
+        const description =
+            product.innerText.toLowerCase();
+
+
+        if (
+            name.includes(searchText) ||
+            category.includes(searchText) ||
+            description.includes(searchText)
+        ) {
+
+            product.style.display = "block";
+
+            found = true;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("deals")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+
+    if (!found) {
+
+        alert(
+            "No matching product found.\n\n" +
+            "Try Smartphone, Earbuds, Watch, " +
+            "Backpack or Speaker."
+        );
+
+        products.forEach(function(product) {
+            product.style.display = "block";
+        });
+
+    }
+
+}
+
+
+/* ENTER KEY SEARCH */
+
+document
+    .getElementById("searchInput")
+    .addEventListener("keypress", function(event) {
+
+        if (event.key === "Enter") {
+
+            searchProducts();
+
+        }
+
+    });
+
+
+/* CATEGORY FILTER */
+
+function filterCategory(category) {
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+
+    products.forEach(function(product) {
+
+        if (product.dataset.category === category) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("deals")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* VIEW DEAL */
+
+function viewDeal(productName) {
+
+    alert(
+        "DealNest\n\n" +
+        productName +
+        "\n\n" +
+        "The real affiliate shopping link " +
+        "will be added here."
+    );
+
+}
+
+</script>
+
 
 </body>
 </html>
